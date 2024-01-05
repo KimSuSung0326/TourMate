@@ -7,7 +7,7 @@ const router = createBrowserRouter([
     // errorElement: <NotFound />,
     // children: [{ index: true, element: <Home /> }],
   },
-  // { path: 'login', element:  },
+  //{ path: 'login', element:  },
   // { path: 'signup', element:  },
 ]);
 
