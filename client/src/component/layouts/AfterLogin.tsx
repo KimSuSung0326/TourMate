@@ -10,17 +10,18 @@ const StyledIconLink = styled(Link)`
   text-decoration: none;
 `;
 const StyledLoginLogo = styled.img`
-  margin: 0.625rem;
+  margin-right: 0.625rem;
   width: 2.3rem;
   height: 2.3rem;
 `;
 const StyledButton = styled.button`
-  background-color: var(--green-100);
+  background-color: var(--blue-100);
   margin-right: 10px;
   width: 4rem;
   height: 2.5rem;
   border: 1px solid var(--white);
   color: var(--white);
+  border-radius: 0.313rem;
   &:hover {
     cursor: pointer;
     font-weight: bold;
