@@ -11,7 +11,7 @@ const StyledIconLink = styled(Link)`
 `;
 const StyledLoginLogo = styled.img`
   margin-right: 0.625rem;
-  width: 2.3rem;
+  width: 2.31rem;
   height: 2.3rem;
 `;
 const StyledButton = styled.button`

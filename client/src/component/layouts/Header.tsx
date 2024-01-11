@@ -25,11 +25,11 @@ const StyledLink = styled(Link)`
 
 const StyledBeforeLogin = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   margin-left: auto;
 `;
 const StyledBar = styled.div`
-  margin-left: 30px;
+  margin-left: 1.875rem;
 `;
 export const Header = () => {
   const [IsShop, setIsShop] = useState(true);

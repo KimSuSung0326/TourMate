@@ -32,12 +32,6 @@ const StyledNickName = styled(StyledeEmail)`
   margin-top: 0.5rem;
 `;
 
-// const StyledLostPassWord = styled.div`
-//   color: rgba(134, 190, 255, 1);
-//   margin-top: 0.5rem;
-//   font-size: 0.7rem;
-// `;
-
 export const SignUp = () => {
   const [nickname, setnickname] = useState(''); // 닉네임
   const [email, setEmail] = useState(''); // 이메일

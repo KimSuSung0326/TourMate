@@ -15,7 +15,7 @@ const LoginContainer = styled.form`
 
 const LoginTitle = styled.h1`
   font-size: 2.7rem;
-  font-weight: 550;
+  font-weight: 549;
 `;
 const LoginSubTitle = styled.span`
   color: #808080;

@@ -9,7 +9,7 @@ const StyledBlueButton = styled.div`
   border-radius: 0.5rem;
   color: white;
   width: 18rem;
-  height: 2.6rem;
+  height: 2.59rem;
   margin: 2rem 0 0.5rem 0;
   display: flex;
   align-items: center;
