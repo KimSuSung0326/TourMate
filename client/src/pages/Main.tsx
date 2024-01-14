@@ -1,7 +1,10 @@
+import { AdSlider } from 'component/AdSlide/AdSlider';
 export const Main = () => {
+  //
+
   return (
     <>
-      <div>메인페이지!</div>
+      <AdSlider />
     </>
   );
 };
