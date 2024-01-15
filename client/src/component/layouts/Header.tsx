@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { AfterLogin } from './AfterLogin';
 import { useState } from 'react';
-
+import { Sidebar } from 'component/Sidebar/Sidebar';
 const StyledHeaderContainer = styled.nav`
   display: flex;
   justify-content: flex;
@@ -30,16 +30,27 @@ const StyledBeforeLogin = styled.div`
 `;
 const StyledBar = styled.div`
   margin-left: 1.875rem;
+  &:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
 `;
 export const Header = () => {
-  const [IsShop, setIsShop] = useState(true);
+  const [IsShop, setIsShop] = useState(true); // After Login 상태
+  const [IsOpen, setIsOpen] = useState(false); // 사이트바 상태
+  const toggleSide = () => {
+    // 메뉴 버튼 클릭 함수
+    setIsOpen(true);
+  };
+
   return (
     <>
       <StyledHeaderContainer>
-        <StyledBar>
+        <StyledBar onClick={toggleSide}>
           <FontAwesomeIcon icon={faBars} size="2x" />
         </StyledBar>
 
+        <Sidebar isOpen={IsOpen} setIsOpen={setIsOpen} />
         <StyledLink to={'/'}>
           <StyledLogo src={logo} />
         </StyledLink>
