@@ -9,10 +9,9 @@ interface StyledInputProp {
 }
 
 const StyledInputBar = styled.input<StyledInputProp>`
-  border: 0.625rem solid #4a4543;
-  border-color: rgba(218, 218, 218, 1);
+  border: 0.125rem solid var(--gray-100);
   border-radius: 0.5rem;
-  background-color: white;
+  background-color: var(--white);
   width: 18rem;
   height: 2.6rem;
   margin-top: 0.5rem;

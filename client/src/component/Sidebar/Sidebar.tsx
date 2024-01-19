@@ -17,7 +17,6 @@ const StyledSideBarWrap = styled.div`
     left: 0;
     transition: 0.5s ease;
   }
-  border: 1px solid red;
 `;
 const StyledCloseBtn = styled.div`
   position: absolute;
@@ -29,7 +28,6 @@ const StyledCloseBtn = styled.div`
   }
 `;
 const StyledMenuWrap = styled.div`
-  border: 1px solid red;
   margin-top: 16%;
 `;
 const StyledMenuList = styled.li`
@@ -41,8 +39,7 @@ const StyledMenuList = styled.li`
   font-weight: 550;
   margin: 1rem 0 1rem 0;
   position: relative;
-  color: var(--blue-100);
-  border: 1px solid blue;
+  color: var(--black);
 `;
 const StyledMenuLink = styled(Link)`
   text-decoration: none;
