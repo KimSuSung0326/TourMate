@@ -44,6 +44,9 @@ const StyledMenuList = styled.li`
 const StyledMenuLink = styled(Link)`
   text-decoration: none;
 `;
+const StyledMargin = styled.div`
+  margin: 0.5rem 0 0.5rem 0;
+`;
 interface Props {
   isOpen: boolean;
   setIsOpen: any;
@@ -59,6 +62,7 @@ const MenuList: Menu[] = [
   { id: '3', name: '내 여행일정', link: '/mytravel' },
   { id: '4', name: '공유한 사진 지도', link: '/sharephoto' },
   { id: '5', name: '공유 여행일정', link: '/sharetravel' },
+  { id: '6', name: '여행일정 작성', link: '/plantravel' },
 ];
 export const Sidebar = ({ isOpen, setIsOpen }: Props) => {
   const outside = useRef<any>();
@@ -91,9 +95,10 @@ export const Sidebar = ({ isOpen, setIsOpen }: Props) => {
           <FontAwesomeIcon icon={faX} color="white"></FontAwesomeIcon>
         </StyledCloseBtn>
         <StyledMenuWrap>
-          {MenuList.map((list) => {
+          {MenuList.map((list, index) => {
             return (
               <StyledMenuLink key={list.id} to={list.link}>
+                <StyledMargin />
                 <StyledMenuList>{list.name}</StyledMenuList>
               </StyledMenuLink>
             );
