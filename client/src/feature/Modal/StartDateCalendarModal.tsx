@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
-import { BlueButton } from 'feature/BlueButton';
+import { BlueButton } from 'feature/Button/BlueButton';
 import { useDispatch } from 'react-redux';
 import { close, open } from '../../redux/reducers/modalSlice';
 const ModalWrap = styled.div`

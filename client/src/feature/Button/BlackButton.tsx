@@ -16,7 +16,7 @@ const StyledBlackButton = styled.div`
   font-weight: 700;
   font-size: 1.3rem;
   position: relative;
-  left: 50%;
+  left: 22%;
   &:hover {
     cursor: pointer;
     font-weight: bold;

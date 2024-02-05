@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
-import { BlueButton } from 'feature/Button/BlueButton';
-import { useDispatch } from 'react-redux';
-import { close, open } from '../../redux/reducers/modalSlice';
 const ModalWrap = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0%;
-  left: 0%;
 `;
 
 const ModalBackDrop = styled.div`
@@ -21,6 +16,8 @@ const ModalBackDrop = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0rem;
+  left: -0rem;
 `;
 
 const ModalContainer = styled.div`
@@ -30,13 +27,16 @@ const ModalContainer = styled.div`
   flex-direction: column;
   z-index: 9999;
   height: 100%; /* ModalContainer의 높이를 100%로 설정 */
+
+  left: -80%;
+  top: -30%;
 `;
 
 const ModalContent = styled.div`
   position: relative; /* 부모 요소로부터의 상대 위치 */
   background-color: var(--white);
-  width: 20rem;
-  height: 30rem;
+  width: 35rem;
+  height: 40rem;
   border-radius: 1rem;
   z-index: 9999;
   display: flex;
@@ -54,18 +54,43 @@ const ModalContent = styled.div`
     flex-direction: column;
     overflow-y: auto;
   }
+  .memo-explain {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
 `;
 
 interface Props {
-  children: string;
+  children: React.ReactNode;
   onClick: () => void;
 }
 
 const StyledMargin = styled.div`
-  margin-top: 10rem;
+  margin-top: 1rem;
 `;
+const StyledMargin2 = styled.div`
+  margin-top: 3rem;
+`;
+const StyledButton = styled.div`
+  background-color: rgba(134, 190, 255, 1);
+  border-radius: 0.5rem;
+  color: white;
+  width: 10rem;
+  height: 2.59rem;
+  margin: 2rem 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
 
-const StyledButton = styled.button<{ transparent?: boolean }>`
+  &.focused {
+    font-weight: bold;
+  }
+`;
+const StyledButton2 = styled.button<{ transparent?: boolean }>`
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -74,28 +99,25 @@ const StyledButton = styled.button<{ transparent?: boolean }>`
   background-color: transparent;
   border: none;
 `;
-
-export const Modal = ({ children, onClick }: Props) => {
-  const dispatch = useDispatch();
-  const handleOut = () => {
-    dispatch(close());
-    alert('탈퇴되었습니다.');
-  };
+export const ChangeMemoModal = ({ children, onClick }: Props) => {
   return (
     <>
       <ModalWrap>
         <ModalBackDrop>
           <ModalContainer>
             <ModalContent>
-              <StyledButton onClick={onClick}>
+              <StyledButton2 onClick={onClick}>
                 <FontAwesomeIcon
                   icon={faX}
                   size="2xl"
                   style={{ color: '#ff0000' }}
                 />
-              </StyledButton>
+              </StyledButton2>{' '}
+              <StyledMargin2></StyledMargin2>
+              <div className="memo-explain"> 메모 일정을 수정 해주세요!</div>
               <div className="Modal-Text">{children}</div>
-              <BlueButton onClick={handleOut}>탈퇴하기</BlueButton>
+              <StyledMargin></StyledMargin>
+              <StyledButton onClick={onClick}>수정하기</StyledButton>
             </ModalContent>
             <StyledMargin />
           </ModalContainer>

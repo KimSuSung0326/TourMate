@@ -5,6 +5,8 @@ import profileSlice from './reducers/profileSlice';
 import nicknameSlice from './reducers/nicknameSlice';
 import passwordSlice from './reducers/passwordSlice';
 import memoSlice from './reducers/memoSlice';
+import placeSlice from './reducers/placeSlice';
+import setSelectedPlace from './reducers/setSelectedPlace';
 // store
 const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
     nickname: nicknameSlice,
     password: passwordSlice,
     memo: memoSlice,
+    place: placeSlice,
+    setplace: setSelectedPlace,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import EndDateInput from 'feature/EndDateInput';
+import EndDateInput from 'feature/Input/EndDateInput';
 import styled from 'styled-components';
 import { EndDateCalendarModal } from '../../feature/Modal/EndDateCalendarModal';
 export const EndDateCalendar = () => {

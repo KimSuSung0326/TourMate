@@ -3,7 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { BlueButton } from 'feature/Button/BlueButton';
 import { useDispatch } from 'react-redux';
-import { close, open } from '../../redux/reducers/modalSlice';
+import { close6 } from '../../redux/reducers/placeSlice';
+import React, { ReactNode } from 'react';
+interface AddPlaceModalProps {
+  onClick: () => void;
+  children: ReactNode;
+}
 const ModalWrap = styled.div`
   position: absolute;
   width: 100%;
@@ -35,14 +40,15 @@ const ModalContainer = styled.div`
 const ModalContent = styled.div`
   position: relative; /* 부모 요소로부터의 상대 위치 */
   background-color: var(--white);
-  width: 20rem;
-  height: 30rem;
+  width: 50rem;
+  height: 60rem;
   border-radius: 1rem;
   z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  left: 50%;
   .Modal-Text {
     display: flex;
     justify-content: center;
@@ -53,18 +59,27 @@ const ModalContent = styled.div`
     font-weight: 600;
     flex-direction: column;
     overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  .memo-explain {
+    font-weight: 600;
+    font-size: 1.2rem;
   }
 `;
 
 interface Props {
-  children: string;
+  children: React.ReactNode;
   onClick: () => void;
 }
 
 const StyledMargin = styled.div`
-  margin-top: 10rem;
+  margin-top: 1rem;
 `;
-
+const StyledMargin2 = styled.div`
+  margin-top: 3rem;
+`;
 const StyledButton = styled.button<{ transparent?: boolean }>`
   position: absolute;
   top: 1rem;
@@ -74,12 +89,14 @@ const StyledButton = styled.button<{ transparent?: boolean }>`
   background-color: transparent;
   border: none;
 `;
-
-export const Modal = ({ children, onClick }: Props) => {
+export const AddPlaceModal: React.FC<AddPlaceModalProps> = ({
+  onClick,
+  children,
+}) => {
   const dispatch = useDispatch();
   const handleOut = () => {
-    dispatch(close());
-    alert('탈퇴되었습니다.');
+    alert('추가 완료.');
+    dispatch(close6());
   };
   return (
     <>
@@ -93,9 +110,12 @@ export const Modal = ({ children, onClick }: Props) => {
                   size="2xl"
                   style={{ color: '#ff0000' }}
                 />
-              </StyledButton>
+              </StyledButton>{' '}
+              <StyledMargin2></StyledMargin2>
+              <div className="memo-explain"> 여행 일정을 추가 해주세요!</div>
               <div className="Modal-Text">{children}</div>
-              <BlueButton onClick={handleOut}>탈퇴하기</BlueButton>
+              <StyledMargin></StyledMargin>
+              <BlueButton onClick={handleOut}>여행 추가</BlueButton>
             </ModalContent>
             <StyledMargin />
           </ModalContainer>

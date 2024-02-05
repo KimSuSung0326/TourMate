@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { TravelItems } from 'component/Travel/TravelItems';
 import { TravelList } from 'component/Travel/TravelList';
 import { useState, useEffect } from 'react';
-import useIntersectionObserver from 'component/InfinityScroll.tsx/useIntersectionObserver';
+import useIntersectionObserver from 'component/InfinityScroll/useIntersectionObserver';
 const StyledMyPageWrap = styled.div`
   display: flex;
   flex-direction: column;

@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
-import { BlueButton } from 'feature/BlueButton';
-import { useDispatch } from 'react-redux';
-import { close5, open5 } from '../../redux/reducers/memoSlice';
 const ModalWrap = styled.div`
   position: absolute;
   width: 100%;
@@ -71,7 +68,26 @@ const StyledMargin = styled.div`
 const StyledMargin2 = styled.div`
   margin-top: 3rem;
 `;
-const StyledButton = styled.button<{ transparent?: boolean }>`
+const StyledButton = styled.div`
+  background-color: rgba(134, 190, 255, 1);
+  border-radius: 0.5rem;
+  color: white;
+  width: 10rem;
+  height: 2.59rem;
+  margin: 2rem 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  &.focused {
+    font-weight: bold;
+  }
+`;
+const StyledButton2 = styled.button<{ transparent?: boolean }>`
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -81,29 +97,24 @@ const StyledButton = styled.button<{ transparent?: boolean }>`
   border: none;
 `;
 export const AddMemoModal = ({ children, onClick }: Props) => {
-  const dispatch = useDispatch();
-  const handleOut = () => {
-    alert('추가 완료.');
-    dispatch(close5());
-  };
   return (
     <>
       <ModalWrap>
         <ModalBackDrop>
           <ModalContainer>
             <ModalContent>
-              <StyledButton onClick={onClick}>
+              <StyledButton2 onClick={onClick}>
                 <FontAwesomeIcon
                   icon={faX}
                   size="2xl"
                   style={{ color: '#ff0000' }}
                 />
-              </StyledButton>{' '}
+              </StyledButton2>{' '}
               <StyledMargin2></StyledMargin2>
               <div className="memo-explain"> 메모 일정을 추가 해주세요!</div>
               <div className="Modal-Text">{children}</div>
               <StyledMargin></StyledMargin>
-              <BlueButton onClick={handleOut}>메모 추가하기</BlueButton>
+              <StyledButton onClick={onClick}>추가하기</StyledButton>
             </ModalContent>
             <StyledMargin />
           </ModalContainer>

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import React from 'react';
-import { InputBar } from 'feature/InputBar';
+import { InputBar } from 'feature/Input/InputBar';
 import { useState, useEffect } from 'react';
-import { BlueButton } from 'feature/BlueButton';
+import { BlueButton } from 'feature/Button/BlueButton';
 import { Link, useNavigate } from 'react-router-dom';
-import { GoogleButton } from 'feature/GoogleButton';
+import { GoogleButton } from 'feature/Button/GoogleButton';
 const SignUpContainer = styled.form`
   display: flex;
   justify-content: center;
