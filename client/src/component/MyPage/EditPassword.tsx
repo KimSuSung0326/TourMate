@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { SmallButton } from 'feature/SmallButton';
+import { SmallButton } from 'feature/Button/SmallButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { close4 } from '../../redux/reducers/passwordSlice';
-import { InputBar } from 'feature/InputBar';
+import { InputBar } from 'feature/Input/InputBar';
 import { useState } from 'react';
 const StyledEditContainer = styled.div`
   display: flex;

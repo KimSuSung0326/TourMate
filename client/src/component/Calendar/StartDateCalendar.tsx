@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import StartDateInput from 'feature/StartDateInput';
+import StartDateInput from 'feature/Input/StartDateInput';
 import styled from 'styled-components';
 import { StartDateCalendarModal } from 'feature/Modal/StartDateCalendarModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export const StartDateCalendar = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [isShow, setIsShow] = useState<boolean>(false);

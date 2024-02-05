@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SmallButton } from 'feature/SmallButton';
+import { SmallButton } from 'feature/Button/SmallButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { open2, close2 } from '../../redux/reducers/profileSlice';
 const StyledEditContainer = styled.div`
