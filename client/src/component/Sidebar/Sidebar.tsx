@@ -58,7 +58,7 @@ interface Menu {
 }
 const MenuList: Menu[] = [
   { id: '1', name: '마이페이지', link: '/mypage' },
-  { id: '2', name: '사진 지도', link: '/photo' },
+  { id: '2', name: '사진 지도', link: '/myphoto' },
   { id: '3', name: '내 여행일정', link: '/mytravel' },
   { id: '4', name: '공유한 사진 지도', link: '/sharephoto' },
   { id: '5', name: '공유 여행일정', link: '/sharetravel' },
