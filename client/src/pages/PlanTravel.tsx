@@ -14,6 +14,8 @@ import { setPlaceList } from '../redux/reducers/setSelectedPlace';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { ChangeMemoModal } from 'feature/Modal/ChangeMemoModal';
+import { open7, close8 } from '../redux/reducers/titleSlice';
+
 declare global {
   interface Window {
     kakao: any;
@@ -108,6 +110,7 @@ const StyledMapWrap = styled.div`
   position: relative;
 `;
 const StyledListWrap = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -116,9 +119,10 @@ const StyledListWrap = styled.div`
   height: 40rem;
   right: 2rem;
   border: 1px solid black;
-  position: relative;
   border-radius: 1rem;
   flex-direction: column;
+
+  overflow-y: auto;
 `;
 const StyledPlaceWrap = styled.div`
   display: flex;
@@ -132,6 +136,7 @@ const StyledPlaceWrap = styled.div`
   position: relative;
   border-radius: 1rem;
   flex-direction: column;
+  overflow-y: auto;
 `;
 const Memo = styled.div`
   display: flex;
@@ -186,20 +191,15 @@ const Memo = styled.div`
     }
   }
 `;
-const ListNumber = styled.div`
-  //position: absolute;
-  top: 0;
-  left: 10%;
-  height: 100%;
-  width: 1rem; // 두께 조절
-  background-color: var(--white);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+
+const ListDistance = styled.div`
+  position: absolute;
+  margin-top: 5rem;
+  width: 5rem;
 `;
 const Place = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* 왼쪽 정렬을 위해 변경 */
   align-items: center;
   background-color: var(--gray-100);
   color: var(--black);
@@ -208,8 +208,9 @@ const Place = styled.div`
   font-size: 1rem;
   font-weight: 650;
   margin: 1rem 0 1rem 0;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   box-shadow: 0.2rem 0.2rem var(--gray-200);
+
   //overflow-y: auto;
   .PlaceBtn {
     margin: 1rem;
@@ -224,14 +225,77 @@ const Place = styled.div`
   }
 `;
 
+const ListNumber = styled.div`
+  position: relative;
+  /* 아래의 스타일을 추가하여 왼쪽에 위치시킵니다. */
+  margin-right: 2.75rem; /* Place와 ListNumber 사이의 간격을 조정합니다. */
+  margin-left: -0.3rem; /* Place 내부에 들어가는 ListNumber를 왼쪽으로 이동시킵니다. */
+  height: 100%;
+  width: 12%; // 두께 조절
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 0.0625rem solid var(--black);
+`;
+const ListNumber2 = styled.div`
+  position: relative;
+  /* 아래의 스타일을 추가하여 왼쪽에 위치시킵니다. */
+  margin-right: 3.75rem; /* Place와 ListNumber 사이의 간격을 조정합니다. */
+  margin-left: -0.15rem; /* Place 내부에 들어가는 ListNumber를 왼쪽으로 이동시킵니다. */
+  height: 100%;
+  width: 10%; // 두께 조절
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 0.12rem solid var(--black);
+`;
+const StyledTitle = styled.input`
+  border: 0.00625rem solid var(--black);
+  width: 30rem;
+  height: 70%;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  background-color: var(--gray-100);
+  &::placeholder {
+    color: var(--white);
+  }
+`;
+const StyledTitleBtn = styled.div`
+  border: 0.00325rem solid var(--black);
+  width: 4.5rem;
+  height: 70%;
+  border-radius: 0.425rem;
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-left: -3.7rem;
+  z-index: 1;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+const TitleWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+const ShowTitle = styled.div``;
 export const PlanTravel = () => {
   const [map, setMap] = useState(null); // 지도 상태
   const [isOPen, setIsOpen] = useState(false); //Calendar 상태
   const [isChangeMemo, setIsChangeMemo] = useState(false); //수정 버튼 상태
   const [memo, setIsMemo] = useState(''); // 여행 메모 상태
+  const [memoList, setMemoList] = useState([]); // 메모 항목을 저장하는 배열
+  const [title, setIstitle] = useState(''); // 여행 제목 상태
+  const [titleList, setIstitleList] = useState([]); // 여행 제목 상태
   const isMemoOpen = useSelector((state) => state as any).memo.memostate;
   const isPlaceOpen = useSelector((state) => state as any).place.placestate;
-  const [memoList, setMemoList] = useState([]); // 메모 항목을 저장하는 배열
+  const isTitleOPen = useSelector((state) => state as any).title.titlestate;
   const selectedPlaceList = useSelector((state) => state as any).setplace
     .selectedPlace; // 장소 배열 데이터
   const [isOpenPlaceList, setIsOpenPlaceList] = useState(
@@ -242,12 +306,10 @@ export const PlanTravel = () => {
   ); //메모 데이터를 배열로 만들고 그것에 대한 값을 false로 변경
   const dispatch = useDispatch();
   const [editedMemoIndex, setEditedMemoIndex] = useState(null);
-
-  const combinedList = [...selectedPlaceList]; // Memo,Place 값 합침
+  const [distances, setDistances] = useState<number[]>([]); // 장소 간의 거리를 저장 할 배열
   const handleOnClick = () => {
     alert('완료');
   };
-
   const handleAddText = () => {
     dispatch(open5());
   };
@@ -267,6 +329,14 @@ export const PlanTravel = () => {
   const handleClosemodal2 = () => {
     // 장소 작성 모달
     dispatch(close6());
+  };
+  const handleOpenTitle = () => {
+    // 제목 입력 창 열기
+    dispatch(open7());
+  };
+  const handleCloseTitle = () => {
+    // 제목 입력 창 닫기
+    dispatch(close8());
   };
   const handleRemoveSelectedPlace = (indexToRemove: number) => {
     // 장소 제거 함수
@@ -347,23 +417,141 @@ export const PlanTravel = () => {
   };
 
   // 지도 그리기
-  // useEffect(() => {
-  //   const mapContainer = document.getElementById('map');
-  //   const mapOption = {
-  //     center: new window.kakao.maps.LatLng(33.450701, 126.570667), // 기본 중심 좌표 설정
-  //     level: 3,
-  //   };
-  //   const map = new window.kakao.maps.Map(mapContainer, mapOption);
-  //   setMap(map);
-  // }, []);
-  console.log(combinedList);
+  // useEffect 안에서 호출하는 부분
+  useEffect(() => {
+    const mapContainer = document.getElementById('map'); // 지도를 표시할 div
+    const mapOption = {
+      center: new window.kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+      level: 3, // 지도의 확대 레벨
+    };
+
+    const map = new window.kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    setMap(map);
+
+    if (selectedPlaceList && selectedPlaceList.length > 0) {
+      const bounds = new window.kakao.maps.LatLngBounds();
+
+      selectedPlaceList.forEach((place: any, index: number) => {
+        const markerPosition = new window.kakao.maps.LatLng(
+          place.place_lng,
+          place.place_lat,
+        );
+
+        // 각 마커에 해당하는 번호의 이미지를 사용하도록 수정
+        const imgOptions = {
+          spriteSize: new window.kakao.maps.Size(36, 691),
+          spriteOrigin: new window.kakao.maps.Point(0, index * 46), // 각 마커에 대한 스프라이트 이미지 좌표 설정
+          offset: new window.kakao.maps.Point(13, 37),
+        };
+
+        const markerImage = new window.kakao.maps.MarkerImage(
+          'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png',
+          new window.kakao.maps.Size(36, 45),
+          imgOptions,
+        );
+
+        const marker = new window.kakao.maps.Marker({
+          position: markerPosition,
+          image: markerImage,
+        });
+
+        const infowindow = new window.kakao.maps.InfoWindow({
+          content: `<div style="width:150px;text-align:center;padding:6px 0;">${place.place}</div>`,
+        });
+        infowindow.open(map, marker);
+        marker.setMap(map);
+        bounds.extend(markerPosition);
+
+        map.setBounds(bounds);
+      });
+    }
+    if (selectedPlaceList.length >= 2) {
+      // 거리를 저장할 배열
+      const newDistances: number[] = [];
+
+      // 배열의 각 요소를 순회하면서 거리를 계산합니다.
+      for (let i = 0; i < selectedPlaceList.length - 1; i++) {
+        const place1 = selectedPlaceList[i];
+        const place2 = selectedPlaceList[i + 1];
+
+        const distance = calculateDistance(
+          place1.place_lat,
+          place1.place_lng,
+          place2.place_lat,
+          place2.place_lng,
+        );
+
+        // 계산된 거리를 배열에 추가합니다.
+        newDistances.push(distance);
+      }
+
+      // 모든 거리 값을 상태로 설정합니다.
+      setDistances(newDistances);
+    }
+  }, [selectedPlaceList]);
+
+  // Haversine 공식을 사용하여 두 지점 사이의 거리를 구하는 함수
+  function calculateDistance(lat1: any, lon1: any, lat2: any, lon2: any) {
+    const R = 6371; // 지구의 반지름 (단위: km)
+    const dLat = deg2rad(lat2 - lat1);
+    const dLon = deg2rad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(lat1)) *
+        Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // 두 지점 사이의 거리 (단위: km)
+    return distance;
+  }
+
+  // 각도를 라디안으로 변환하는 함수
+  function deg2rad(deg: any) {
+    return deg * (Math.PI / 180);
+  }
+
+  // selectedPlaceList 배열의 길이가 2 이상인 경우에만 실행
+  if (selectedPlaceList && selectedPlaceList.length >= 2) {
+    // 배열의 각 요소를 순회하면서 인접한 요소들의 거리를 계산
+    for (let i = 0; i < selectedPlaceList.length - 1; i++) {
+      const distance = calculateDistance(
+        selectedPlaceList[i].place_lat,
+        selectedPlaceList[i].place_lng,
+        selectedPlaceList[i + 1].place_lat,
+        selectedPlaceList[i + 1].place_lng,
+      );
+      console.log(
+        `지점 ${i + 1}과 지점 ${i + 2} 사이의 거리: ${distance.toFixed(2)} km`,
+      );
+    }
+  } else {
+    console.log(
+      '선택된 장소가 충분하지 않습니다. 최소한 2개의 장소가 필요합니다.',
+    );
+  }
+  //
   return (
     <>
       <StyledMainContainer>
         <h2 className="title"> 제목:</h2>
-        <div className="TitleContainer">신나는 강릉 여행</div>
+        <div className="TitleContainer" onClick={handleOpenTitle}>
+          {isTitleOPen ? (
+            <TitleWrap>
+              <StyledTitle
+                value={title}
+                onChange={(e) => setIstitle(e.target.value)}
+                placeholder="여행 제목을 입력 해주세요"
+              ></StyledTitle>
+            </TitleWrap>
+          ) : (
+            <ShowTitle>{title}</ShowTitle>
+          )}
+        </div>
+        <StyledTitleBtn onClick={handleCloseTitle}>입력</StyledTitleBtn>
         <BlackButton onClick={handleOnClick}>완료</BlackButton>
       </StyledMainContainer>
+
       <StyledMargin />
       <StyledMainContainer2>
         <h3 className="subTitle"> 🌏 여행 경로</h3>
@@ -392,13 +580,15 @@ export const PlanTravel = () => {
       </StyledMainContainer2>
       <StyeldMapContainer>
         <StyledMapWrap>
-          {/* <div id="map" style={{ width: '100%', height: '100%' }}></div> */}
+          <div id="map" style={{ width: '100%', height: '100%' }}></div>
         </StyledMapWrap>
         <StyledListWrap>
           {selectedPlaceList &&
             selectedPlaceList.map((item: any, index: number) => (
               <Place key={`place-${index}`}>
-                {item}
+                <ListNumber>{index + 1}</ListNumber>
+
+                {item.place}
                 {isOpenPlaceList[index] ? (
                   <>
                     <button onClick={() => handleRemoveSelectedPlace(index)}>
@@ -416,6 +606,11 @@ export const PlanTravel = () => {
                     <FontAwesomeIcon icon={faEllipsisVertical} />
                   </div>
                 )}
+                {index < selectedPlaceList.length - 1 && (
+                  <ListDistance>{`${Number(distances[index]).toFixed(
+                    2,
+                  )}KM`}</ListDistance>
+                )}
               </Place>
             ))}
         </StyledListWrap>
@@ -423,7 +618,7 @@ export const PlanTravel = () => {
           {memoList.map((item: any, index: any) => (
             <Memo key={`place-${index}`}>
               {' '}
-              <ListNumber>{index + 1}</ListNumber>
+              <ListNumber2>{index + 1}</ListNumber2>
               <div className="List-content">
                 <div dangerouslySetInnerHTML={{ __html: item }}></div>
               </div>

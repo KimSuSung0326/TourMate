@@ -73,14 +73,16 @@ export const AddPlace = () => {
   const onclick = () => {
     SetkeyValue(value);
   };
-  const handlePlaceClick = (place_name: string) => {
-    // const placeObject = {
-    //   type: 'place',
-    //   name: place_name,
-    // };
+  const handlePlaceClick = (place_name: string, x: number, y: number) => {
+    const newPlace = {
+      type: 'place',
+      place: place_name,
+      place_lat: x,
+      place_lng: y,
+    };
     setSelectedPlace(place_name);
-    setSelectedPlaceList((prevList) => [...prevList, place_name]);
-    console.log(place_name);
+    setSelectedPlaceList((prevList) => [...prevList, newPlace]);
+    console.log(selectedPlaceList);
   };
 
   useEffect(() => {
@@ -170,9 +172,12 @@ export const AddPlace = () => {
                 <span>{item.address_name}</span>
               )}
               <span className="item-phone">{item.phone}</span>
+
               <button
                 className="list-btn"
-                onClick={() => handlePlaceClick(item.place_name)}
+                onClick={() =>
+                  handlePlaceClick(item.place_name, item.x, item.y)
+                }
               >
                 추가
               </button>

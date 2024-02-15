@@ -19,6 +19,7 @@ export const StartDateCalendar = () => {
   const handleOnChange = (value: Date) => {
     setIsShow(!isShow);
     setDate(value);
+    console.log(formattedDate);
   };
   const handleModalClose = () => {
     setIsShow(true);

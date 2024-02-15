@@ -7,6 +7,7 @@ import passwordSlice from './reducers/passwordSlice';
 import memoSlice from './reducers/memoSlice';
 import placeSlice from './reducers/placeSlice';
 import setSelectedPlace from './reducers/setSelectedPlace';
+import titleSlice from './reducers/titleSlice';
 // store
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     memo: memoSlice,
     place: placeSlice,
     setplace: setSelectedPlace,
+    title: titleSlice,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

@@ -9,6 +9,7 @@ import { MyTravel } from 'pages/MyTravel';
 import { Provider as RTKProvider } from 'react-redux';
 import { SharingTravel } from 'pages/SharingTravel';
 import { PlanTravel } from 'pages/PlanTravel';
+import { MyPhote } from 'pages/MyPhoto';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: '/mytravel', element: <MyTravel /> },
       { path: '/sharetravel', element: <SharingTravel /> },
       { path: '/plantravel', element: <PlanTravel /> },
+      { path: '/myphoto', element: <MyPhote /> },
     ],
   },
   { path: 'login', element: <Login /> },
