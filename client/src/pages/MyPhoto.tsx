@@ -61,7 +61,6 @@ export const MyPhote = () => {
   return (
     <>
       {isopen ? <ReviewModal onClose={handleClose} /> : null}
-      {/* <NewFile id={1}></NewFile> */}
       <StyledTitle> 나의 여행 사진</StyledTitle>
       <StyledUploadBtn onClick={handleUpload}> 사진 업로드 </StyledUploadBtn>
       <StyledMapWrap>
