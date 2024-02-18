@@ -16,7 +16,8 @@
 ### 여행 계획 페이지
 <img src = "https://github.com/KimSuSung0326/TourMate/assets/125198053/d3039401-9c19-4b44-8dd0-09ccb54555f9">
 
-
+### 마이 페이지
+<img src = "https://github.com/KimSuSung0326/TourMate/assets/125198053/f56a109f-e9ee-4358-89ae-4378d40b10cf">
                                                                                                                                       
 ## ✍Tech Stack
 ### Frontend
