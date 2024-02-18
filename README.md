@@ -10,8 +10,10 @@
 |---------------------------------------------------|
 | [@KimSuSung0326](https://github.com/KimSuSung0326)|
 ### 
-|**김수성**                                                                      |
-| **Header / Footer / Router / 로그인 / 회원가입 / 개발 환경 세팅  / 지도 CRUD** |
+### Frontend
+| 김수성                                             |         
+|---------------------------------------------------|
+| [@KimSuSung0326](https://github.com/KimSuSung0326)|
 
 
                                                                                                                                       
