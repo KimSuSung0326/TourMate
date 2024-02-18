@@ -41,6 +41,9 @@ const StyledMainContainer = styled.div`
     position: relative;
     left: 1%;
     font-weight: 550;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -283,6 +286,9 @@ const TitleWrap = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const ShowTitle = styled.div``;
 export const PlanTravel = () => {

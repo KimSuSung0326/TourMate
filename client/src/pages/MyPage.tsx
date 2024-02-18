@@ -163,7 +163,10 @@ export const MyPage = () => {
   return (
     <>
       <StyledMyPageWrap>
-        <StyledProfile src={Profile} onClick={handleChangeImg} />
+        <StyledProfile
+          src={'https://i.ibb.co/7XzCWpg/profile2.png'}
+          onClick={handleChangeImg}
+        />
         {isImgOpen ? <EditImg /> : null}
         <StyledInputContainer>
           {/* 여기에는 나중에 API로 받아온 유저 이름, 비밀번호 */}
