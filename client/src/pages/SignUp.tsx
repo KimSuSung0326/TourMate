@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import React from 'react';
-import { InputBar } from 'feature/InputBar';
+import { InputBar } from 'feature/Input/InputBar';
 import { useState, useEffect } from 'react';
-import { BlueButton } from 'feature/BlueButton';
+import { BlueButton } from 'feature/Button/BlueButton';
 import { Link, useNavigate } from 'react-router-dom';
-import { GoogleButton } from 'feature/GoogleButton';
+import { GoogleButton } from 'feature/Button/GoogleButton';
 const SignUpContainer = styled.form`
   display: flex;
   justify-content: center;
@@ -31,12 +31,6 @@ const StyledPassWord = styled(StyledeEmail)`
 const StyledNickName = styled(StyledeEmail)`
   margin-top: 0.5rem;
 `;
-
-// const StyledLostPassWord = styled.div`
-//   color: rgba(134, 190, 255, 1);
-//   margin-top: 0.5rem;
-//   font-size: 0.7rem;
-// `;
 
 export const SignUp = () => {
   const [nickname, setnickname] = useState(''); // 닉네임

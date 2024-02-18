@@ -6,7 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { AfterLogin } from './AfterLogin';
 import { useState } from 'react';
-
+import { Sidebar } from 'component/Sidebar/Sidebar';
+import { useDispatch, useSelector } from 'react-redux';
+import { open1, close1 } from '../../redux/reducers/logoutSlice';
 const StyledHeaderContainer = styled.nav`
   display: flex;
   justify-content: flex;
@@ -25,26 +27,40 @@ const StyledLink = styled(Link)`
 
 const StyledBeforeLogin = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   margin-left: auto;
 `;
 const StyledBar = styled.div`
-  margin-left: 30px;
+  margin-left: 1.875rem;
+  &:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
 `;
 export const Header = () => {
-  const [IsShop, setIsShop] = useState(true);
+  const dispatch = useDispatch();
+  const isLogin = useSelector((state) => state as any).logout.isOpen;
+
+  const [IsShop, setIsShop] = useState(true); // After Login 상태
+  const [IsOpen, setIsOpen] = useState(false); // 사이트바 상태
+  const toggleSide = () => {
+    // 메뉴 버튼 클릭 함수
+    setIsOpen(true);
+  };
+  console.log(isLogin);
   return (
     <>
       <StyledHeaderContainer>
-        <StyledBar>
+        <StyledBar onClick={toggleSide}>
           <FontAwesomeIcon icon={faBars} size="2x" />
         </StyledBar>
 
+        <Sidebar isOpen={IsOpen} setIsOpen={setIsOpen} />
         <StyledLink to={'/'}>
           <StyledLogo src={logo} />
         </StyledLink>
         <StyledBeforeLogin>
-          {IsShop ? <AfterLogin /> : <BeforeLogin />}
+          {isLogin ? <AfterLogin /> : <BeforeLogin />}
         </StyledBeforeLogin>
       </StyledHeaderContainer>
     </>

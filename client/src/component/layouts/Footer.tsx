@@ -45,7 +45,7 @@ const Teammembers: TeamMember[] = [
   },
   {
     name: '도희정',
-    githubId: ' @ehgm',
+    githubId: ' @ehgm1',
     githubUrl: 'https://github.com/devlearning98',
   },
 

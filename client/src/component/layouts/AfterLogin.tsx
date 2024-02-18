@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import profile from '../../assets/img/profile.png';
 import { useState } from 'react';
 import { BeforeLogin } from './BeforeLogin';
+import { useDispatch, useSelector } from 'react-redux';
+import { open1, close1 } from '../../redux/reducers/logoutSlice';
 const StyledPadding = styled.div`
   padding-right: 7rem;
 `;
@@ -11,7 +13,7 @@ const StyledIconLink = styled(Link)`
 `;
 const StyledLoginLogo = styled.img`
   margin-right: 0.625rem;
-  width: 2.3rem;
+  width: 2.31rem;
   height: 2.3rem;
 `;
 const StyledButton = styled.button`
@@ -32,10 +34,12 @@ const StyledButton = styled.button`
   }
 `;
 export const AfterLogin = () => {
+  const dispatch = useDispatch();
   const [logout, setlogout] = useState(true);
   const navigator = useNavigate();
   const handlelogout = () => {
-    setlogout(false);
+    //setlogout(false);
+    dispatch(close1());
     navigator('/');
   };
   if (!logout) {

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import React from 'react';
-import { InputBar } from 'feature/InputBar';
+import { InputBar } from 'feature/Input/InputBar';
 import { useState, useEffect } from 'react';
-import { BlueButton } from 'feature/BlueButton';
+import { BlueButton } from 'feature/Button/BlueButton';
 import { Link, useNavigate } from 'react-router-dom';
-import { GoogleButton } from 'feature/GoogleButton';
+import { GoogleButton } from 'feature/Button/GoogleButton';
 const LoginContainer = styled.form`
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@ const LoginContainer = styled.form`
 
 const LoginTitle = styled.h1`
   font-size: 2.7rem;
-  font-weight: 550;
+  font-weight: 549;
 `;
 const LoginSubTitle = styled.span`
   color: #808080;
