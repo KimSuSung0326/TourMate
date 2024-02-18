@@ -17,7 +17,7 @@
 <img src = "https://github.com/KimSuSung0326/TourMate/assets/125198053/d3039401-9c19-4b44-8dd0-09ccb54555f9">
 
 ### 마이 페이지
-<img src = "https://github.com/KimSuSung0326/TourMate/assets/125198053/f56a109f-e9ee-4358-89ae-4378d40b10cf">
+<img src = "https://github.com/KimSuSung0326/TourMate/assets/125198053/a32cc202-2e06-4b4c-be7f-ad3a36f2ea80">
                                                                                                                                       
 ## ✍Tech Stack
 ### Frontend
