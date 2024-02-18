@@ -18,7 +18,10 @@
 
 ### 마이 페이지
 <img src = "https://github.com/KimSuSung0326/TourMate/assets/125198053/a32cc202-2e06-4b4c-be7f-ad3a36f2ea80" width= "700px" height = "400px">
-                                                                                                                                      
+
+### Infinity Scroll
+<img src = " https://github.com/KimSuSung0326/TourMate/assets/125198053/1a9da123-6f9d-4aa6-b0cb-3d3c05529912  " width= "700px" height = "400px">
+                                                                                                                                   
 ## ✍Tech Stack
 ### Frontend
 <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/Html-E34F26?style=for-the-badge&logo=Html5&logoColor=white"> <img src="https://img.shields.io/badge/Javascript-aqua?style=for-the-badge&logo=typescript&logoColor=white"> <img src ="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" > <img src ="https://img.shields.io/badge/jotai-black?style=for-the-badge&logo=jotai&logoColor=white">
