@@ -20,7 +20,7 @@
 <img src = "https://github.com/KimSuSung0326/TourMate/assets/125198053/a32cc202-2e06-4b4c-be7f-ad3a36f2ea80" width= "700px" height = "400px">
 
 ### Infinity Scroll
-<img src = " https://github.com/KimSuSung0326/TourMate/assets/125198053/f0aeccc6-a8b0-4bef-af97-62e146d24383" width= "700px" height = "400px"  >
+<img src = "https://github.com/KimSuSung0326/TourMate/assets/125198053/9db689fa-5b70-414b-b318-468d35fbfbd1" width= "700px" height = "400px"  >
                                                                                                                                   
 ## ✍Tech Stack
 ### Frontend
