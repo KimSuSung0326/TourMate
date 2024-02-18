@@ -10,7 +10,8 @@
 |---------------------------------------------------|
 | [@KimSuSung0326](https://github.com/KimSuSung0326)|
 
-| 김수성 | 메인페이지 / 마이페이지(회원 정보 조회, 수정) / 챌린지 페이지( 챌린지 CRUD, 챌린지 댓글 CRUD) / 배포 |  
+
+| **김수성** |  **Header / Footer / Router / 로그인 / 회원가입 / 개발 환경 세팅  / 지도 CRUD** |
                                                                                                                                       
 ## ✍Tech Stack
 ### Frontend
